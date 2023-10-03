@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\HistoryIppkhController;
 use App\Http\Controllers\HomeController;
-use App\Livewire\ShowIppkh;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +21,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/home', HomeController::class)->middleware('auth');
+Route::resource('/home/history', HistoryIppkhController::class)->middleware('auth');
+// Route::resource('/history', HistoryIppkhController::class)->middleware('auth');
 
 Auth::routes();
-

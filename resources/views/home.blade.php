@@ -10,96 +10,127 @@
                     <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">BPKHTL-XV</span>
                 </a>
                 <div class="flex md:order-2">
-                    <a href="/login"
-                        class="text-white outline-1 outline hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">LOGIN</a>
+                    @auth
+
+                        <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation"
+                            class="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+                            type="button">Welcome, {{ auth()->user()->name }}<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m1 1 4 4 4-4" />
+                            </svg></button>
+
+                        <!-- Dropdown menu -->
+                        <div id="dropdownInformation"
+                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                            <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                                <div>{{ auth()->user()->name }}</div>
+                                <div class="font-medium truncate">{{ auth()->user()->email }}</div>
+                            </div>
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownInformationButton">
+                                <li>
+                                    <a href="/home" class="block px-4 py-2 hover:bg-gray-100 ">Dashboard</a>
+                                </li>
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button class="block w-full text-left px-4 py-2 hover:bg-gray-100 ">Logout</button>
+                                    </form>
+                                </li>
+                        </div>
+                    @else
+                        <a href="/login"
+                            class="text-white outline-1 outline hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">LOGIN</a>
+                    @endauth
                     {{-- <button data-collapse-toggle="navbar-sticky" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                    aria-controls="navbar-sticky" aria-expanded="false">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 17 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 1h15M1 7h15M1 13h15" />
-                    </svg>
-                </button> --}}
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-sticky" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button> --}}
                 </div>
                 <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                     <ul
                         class="flex flex-col p-4 md:p-0 mt-4 lg:-ml-44 font-medium rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
                         {{-- <li>
-                        <a href="#" class="block py-2 pl-3 pr-4 text-white md:p-0">Home</a>
-                    </li>
-                    <li>
-                        <button id="mega-menu-full-dropdown-button" data-collapse-toggle="mega-menu-full-dropdown"
-                            class="flex items-center justify-between w-full py-2 pl-3 pr-4  text-white rounded md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Company
-                            <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg></button>
-                    </li>
-                    <li>
-                        <a href="#" class="block py-2 pl-3 pr-4 text-white md:p-0">Wisata Desa</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block py-2 pl-3 pr-4 text-white md:p-0">Kuliner</a>
-                    </li> --}}
+                    <a href="#" class="block py-2 pl-3 pr-4 text-white md:p-0">Home</a>
+                </li>
+                <li>
+                    <button id="mega-menu-full-dropdown-button" data-collapse-toggle="mega-menu-full-dropdown"
+                        class="flex items-center justify-between w-full py-2 pl-3 pr-4  text-white rounded md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Company
+                        <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 4 4 4-4" />
+                        </svg></button>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 pl-3 pr-4 text-white md:p-0">Wisata Desa</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 pl-3 pr-4 text-white md:p-0">Kuliner</a>
+                </li> --}}
 
                     </ul>
                 </div>
             </div>
             {{-- <div id="mega-menu-full-dropdown"
-            class="mt-1 border-gray-200 shadow-sm bg-gray-50 md:bg-white border-y dark:bg-gray-800 dark:border-gray-600 hidden">
-            <div
-                class="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:px-6">
-                <ul>
-                    <li>
-                        <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <div class="font-semibold">Online Stores</div>
-                            <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
-                                that you're already using.</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <div class="font-semibold">Segmentation</div>
-                            <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
-                                that you're already using.</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <div class="font-semibold">Marketing CRM</div>
-                            <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
-                                that you're already using.</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <div class="font-semibold">Online Stores</div>
-                            <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
-                                that you're already using.</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <div class="font-semibold">Segmentation</div>
-                            <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
-                                that you're already using.</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <div class="font-semibold">Marketing CRM</div>
-                            <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
-                                that you're already using.</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div> --}}
+        class="mt-1 border-gray-200 shadow-sm bg-gray-50 md:bg-white border-y dark:bg-gray-800 dark:border-gray-600 hidden">
+        <div
+            class="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:px-6">
+            <ul>
+                <li>
+                    <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <div class="font-semibold">Online Stores</div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
+                            that you're already using.</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <div class="font-semibold">Segmentation</div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
+                            that you're already using.</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <div class="font-semibold">Marketing CRM</div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
+                            that you're already using.</span>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <div class="font-semibold">Online Stores</div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
+                            that you're already using.</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <div class="font-semibold">Segmentation</div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
+                            that you're already using.</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <div class="font-semibold">Marketing CRM</div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
+                            that you're already using.</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div> --}}
         </nav>
 
     </header>
@@ -109,16 +140,89 @@
         <div class="grid max-w-screen-lg px-4 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-12">
             <div class="text-center col-span-12">
                 {{-- <div class="flex justify-center items-center"> --}}
-                    <h1
-                        class="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl lg:text-5xl text-white dark:text-white">
-                        WEBSITE RESMI BPKHTL XV GORONTALO</h1>
-                    <p class="max-w-2xl mx-auto mb-6 font-light text-gray-200 lg:mb-8 md:text-lg lg:text-xl">Belum punya akun?</p>
+                <h1 class="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl lg:text-5xl text-white dark:text-white">
+                    WEBSITE RESMI BPKHTL XV GORONTALO</h1>
+                <p class="max-w-2xl mx-auto mb-6 font-light text-gray-200 lg:mb-8 md:text-lg lg:text-xl">Belum punya akun?
+                </p>
                 {{-- </div> --}}
                 <a href="/register"
                     class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-lg px-5 py-3 text-center w-40">Register</a>
             </div>
         </div>
     </section>
+
+    <div id="buttonModal" class="fixed right-0 pb-5 pr-5 bottom-0">
+        <!-- Modal toggle -->
+        <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
+            class="block text-white bg-emerald-500 hover:bg-emerald-600 font-medium rounded-full text-sm p-4 text-center box-border"
+            type="button">
+            <svg class="h-8 w-8 text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em"
+                viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                    d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Main modal -->
+    <div id="defaultModal" tabindex="-1" aria-hidden="true"
+        class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-2xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Kontak Whatsapp
+                    </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="defaultModal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="">
+                    <div class="relative overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        Nama
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Nomor
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        Bapak Herman
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        0812-3456-7890
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <!-- Modal footer -->
+                <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button data-modal-hide="defaultModal" type="button"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- End block -->
     <!-- Start block -->
     <!-- End block -->

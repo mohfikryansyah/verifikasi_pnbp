@@ -1,9 +1,9 @@
 <div>
     <div
-        class="bg-white block sm:flex items-center justify-between mb-3 border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+        class="block sm:flex items-center justify-between mb-3 border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div class="w-full mb-1">
             <div class="mb-4">
-                @include('partials.breadcumb')
+                {{-- @include('partials.breadcumb') --}}
                 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white uppercase">Data Izin Pinjam
                     Pakai Kawasan Hutan</h1>
             </div>
@@ -25,8 +25,7 @@
                     </form>
                 </div>
                 <a href="/home/create"
-                    class="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                    type="button" data-modal-target="addIppkhModal" data-modal-show="addIppkhModal">
+                    class="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                     Tambah Data IPPKH
                 </a>
             </div>
@@ -53,7 +52,7 @@
                                 </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Berlaku
+                                    Berlaku (Tahun)
                                 </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
@@ -82,11 +81,11 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                            @forelse ($dataIppkhs as $dataIppkh)
+                            @forelse ($dataIppkhs as $index => $dataIppkh)
                                 <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
                                     <td
                                         class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $loop->iteration }}
+                                        {{ $dataIppkhs->firstItem() + $index }}
                                     </td>
                                     <td
                                         class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -120,8 +119,8 @@
                                         class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $dataIppkh->keterangan }}
                                     </td>
-                                    <td class="p-4 space-x-2 whitespace-nowrap">
-                                        <button type="button" wire:click="form.edit({{ $dataIppkh->id }})" data-modal-target="addIppkhModal" data-modal-show="addIppkhModal" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    <td class="p-4 space-x-2 whitespace-nowrap flex">
+                                        <a href="/home/{{ $dataIppkh->id }}/edit" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -131,8 +130,11 @@
                                                     d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
                                                     clip-rule="evenodd"></path>
                                             </svg>
-                                        </button>
-                                        <button type="button" 
+                                        </a>
+                                        <form action="/home/{{ $dataIppkh->id }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                        <button type="submit" 
                                             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900">
                                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -141,6 +143,7 @@
                                                     clip-rule="evenodd"></path>
                                             </svg>
                                         </button>
+                                    </form>
                                     </td>
                                 </tr>
                             @empty
@@ -160,8 +163,4 @@
     <div class="mt-4">
         {{ $dataIppkhs->links('vendor.livewire.tailwind') }}
     </div>
-
-
-
-    {{-- @livewire('create-ippkh') --}}
 </div>

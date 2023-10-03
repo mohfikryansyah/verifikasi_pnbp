@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataIppkh;
+use App\Models\HistoryIppkh;
 use Illuminate\Http\Request;
+
+use function Ramsey\Uuid\v1;
 
 class HomeController extends Controller
 {
@@ -52,24 +55,45 @@ class HomeController extends Controller
      */
     public function show(DataIppkh $home)
     {
-        dd($home);
-        // dd(DataIppkh::findOrFail($id));
+        return view('livewire.history-ippkh', [
+            'data' => $home
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DataIppkh $dataIppkh)
-    {
-        //
+    public function edit(DataIppkh $home)
+    {   
+        // dd($home);
+        return view('auth.crud.edit-ippkh', [
+            'dataIppkh' => $home
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DataIppkh $dataIppkh)
+    public function update(Request $request, DataIppkh $home)
     {
-        //
+        $validatedData = $request->validate([
+            'pt' => 'required',
+            'email' => 'required',
+            'nomor_sk' => 'required',
+            'masa_berlaku' => 'required',
+            'mulai' => 'required',
+            'berakhir' => 'required',
+            'luas' => 'required',
+            'verifikasi_pbnp' => 'required',
+            'bukti_bayar' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        try {
+            DataIppkh::where('id', $home->id)->update($validatedData);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**

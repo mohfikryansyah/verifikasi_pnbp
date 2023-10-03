@@ -15,6 +15,11 @@ class DaftarIppkh extends Component
     #[Url] 
     public $search = '';
 
+    public function updatedSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         return view('livewire.daftar-ippkh', [

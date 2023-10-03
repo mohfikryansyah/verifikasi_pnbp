@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\DataIppkh;
+use App\Models\HistoryIppkh;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,11 +22,27 @@ class DatabaseSeeder extends Seeder
             'password' => 'fikripanu2001'
         ]);
 
+        HistoryIppkh::create([
+            'data_ippkh_id' => 1,
+            'l1' => 'Data L1',
+            'l2' => 'Data L2',
+            'l3' => 'Data L3',
+            'tahun' => 'Data'
+        ]);
+        
+        HistoryIppkh::create([
+            'data_ippkh_id' => 7,
+            'l1' => 'Data L1 untuk id 7',
+            'l2' => 'Data L2',
+            'l3' => 'Data L3',
+            'tahun' => 'Data'
+        ]);
+
         DataIppkh::create([
             'pt' => 'PT. Pani Bersama Tambang (PT. PBT)',
             'email' => 'moh.fikryansyah@gmail.com',
             'nomor_sk' => 'SK.188/ MenLHK/Setjen/PLA.0/3/2022',
-            'masa_berlaku' => '16 Tahun',     	
+            'masa_berlaku' => '16',     	
             'mulai' => '2022-03-04',
             'berakhir' => '2035-05-13',
             'luas' => '± 289,08',
@@ -38,7 +55,7 @@ class DatabaseSeeder extends Seeder
             'pt' => 'PT. PLN (Persero)',
             'email' => 'moh.fikryansyah@gmail.com',
             'nomor_sk' => 'SK.41/ MenLHK/ Setjen/LA.0/1/2022',
-            'masa_berlaku' => '24 Tahun',     	
+            'masa_berlaku' => '24',     	
             'mulai' => '2022-01-27',
             'berakhir' => '2046-09-27',
             'luas' => '19,35',
@@ -51,7 +68,7 @@ class DatabaseSeeder extends Seeder
             'pt' => 'PT. PLN (Persero)',
             'email' => 'moh.fikryansyah@gmail.com',
             'nomor_sk' => 'SK.12/MenLHK/Setjen/PLA.0/1/2022',
-            'masa_berlaku' => '24 Tahun',     	
+            'masa_berlaku' => '24',     	
             'mulai' => '2022-01-06',
             'berakhir' => '2046-09-27',
             'luas' => '± 8,82',
@@ -64,7 +81,7 @@ class DatabaseSeeder extends Seeder
             'pt' => 'PT. PLN (Persero)',
             'email' => 'moh.fikryansyah@gmail.com',
             'nomor_sk' => 'SK.999/MenLHK/Setjen/ PLA.0/11/2019',
-            'masa_berlaku' => '27 Tahun',     	
+            'masa_berlaku' => '27',     	
             'mulai' => '2019-11-20',
             'berakhir' => '2046-09-27',
             'luas' => '± 3,64',
@@ -77,7 +94,7 @@ class DatabaseSeeder extends Seeder
             'pt' => 'PT. Gorontalo Mineral (PT. GM)',
             'email' => 'moh.fikryansyah@gmail.com',
             'nomor_sk' => 'SK.489/MenLHK/Setjen/PLA.0/ 7/2019',
-            'masa_berlaku' => '30 Tahun',     	
+            'masa_berlaku' => '30',     	
             'mulai' => '2019-07-24',
             'berakhir' => '2049-02-26',
             'luas' => '± 992,20',
@@ -90,7 +107,7 @@ class DatabaseSeeder extends Seeder
             'pt' => 'PT. Gorontalo Sejahtera Mining (PT. GSM)',
             'email' => 'moh.fikryansyah@gmail.com',
             'nomor_sk' => 'SK.302/MenLHK/Setjen/PLA.0/4/2019',
-            'masa_berlaku' => '30 Tahun',     	
+            'masa_berlaku' => '30',     	
             'mulai' => '2019-04-24',
             'berakhir' => '2049-12-01',
             'luas' => '± 787,67',
@@ -103,7 +120,7 @@ class DatabaseSeeder extends Seeder
             'pt' => 'PT. Puncak Emas Tani Sejahtera (PT. PETS)',
             'email' => 'moh.fikryansyah@gmail.com',
             'nomor_sk' => 'SK.310/ MENLHK/SETJEN/PLA.0/4/2019',
-            'masa_berlaku' => '19 Tahun',     	
+            'masa_berlaku' => '19',     	
             'mulai' => '2019-04-29',
             'berakhir' => '2028-09-03',
             'luas' => '± 93,90',
@@ -116,7 +133,7 @@ class DatabaseSeeder extends Seeder
             'pt' => 'PT. Gorontalo Sejahtera Mining (PT. GSM)',
             'email' => 'moh.fikryansyah@gmail.com',
             'nomor_sk' => '63/1/DataIppkh/ PMDN/2017',
-            'masa_berlaku' => '7 Tahun',     	
+            'masa_berlaku' => '7',     	
             'mulai' => '2017-07-03',
             'berakhir' => '2024-08-15',
             'luas' => '± 999,90',
@@ -129,7 +146,7 @@ class DatabaseSeeder extends Seeder
             'pt' => 'PT. PLN (Persero)',
             'email' => 'moh.fikryansyah@gmail.com',
             'nomor_sk' => '22/1/DataIppkh-PB/PMDN/2017',
-            'masa_berlaku' => '29 Tahun',     	
+            'masa_berlaku' => '29',     	
             'mulai' => '2017-09-25',
             'berakhir' => '2046-09-27',
             'luas' => '± 7,31',
@@ -142,7 +159,7 @@ class DatabaseSeeder extends Seeder
             'pt' => 'PT. Tenaga Listrik Gorontalo',
             'email' => 'moh.fikryansyah@gmail.com',
             'nomor_sk' => 'SK.12 /1/DataIppkh/PMDN/2017',
-            'masa_berlaku' => '19 Tahun',     	
+            'masa_berlaku' => '19',     	
             'mulai' => '2017-02-14',
             'berakhir' => '2036-08-25',
             'luas' => '2,53',
@@ -168,7 +185,7 @@ class DatabaseSeeder extends Seeder
             'pt' => 'PT. Loka Indah Lestari',
             'email' => 'moh.fikryansyah@gmail.com',
             'nomor_sk' => 'SK Kepmenhut Nomor. SK. 69/Menhut-II/2013',
-            'masa_berlaku' => '20 Tahun',     	
+            'masa_berlaku' => '20',     	
             'mulai' => '2013-01-30',
             'berakhir' => null,
             'luas' => '109,20',
@@ -181,7 +198,7 @@ class DatabaseSeeder extends Seeder
             'pt' => 'PT. Sumber Energi Lestari (PT. SEL)',
             'email' => 'moh.fikryansyah@gmail.com',
             'nomor_sk' => 'SK Menhut Nomor. SK.633/Menhut-II/2010',
-            'masa_berlaku' => '20 Tahun',     	
+            'masa_berlaku' => '20',     	
             'mulai' => '2010-11-15',
             'berakhir' => '2030-11-15',
             'luas' => '41',
