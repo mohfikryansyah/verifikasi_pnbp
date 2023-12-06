@@ -40,7 +40,7 @@ class HistoryIppkhController extends Controller
         ]);
         HistoryIppkh::create($validatedData);
 
-        return redirect()->back();
+        return redirect()->back()->with('success' , 'Berhasil menambahkan data');
     }
 
     /**

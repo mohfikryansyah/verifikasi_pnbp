@@ -12,8 +12,20 @@ class DaftarIppkh extends Component
 {
     use WithPagination;
 
-    #[Url] 
+    #[Url]
     public $search = '';
+
+    public $filters = [
+        'berlaku-min' => null,
+        'berlaku-max' => null,
+    ];
+
+
+
+    public function updatedFilters()
+    {
+        $this->resetPage();
+    }
 
     public function updatedSearch()
     {
@@ -23,8 +35,11 @@ class DaftarIppkh extends Component
     public function render()
     {
         return view('livewire.daftar-ippkh', [
-            'dataIppkhs' => DataIppkh::where('pt', 'like', '%' . $this->search . '%')->orWhere('nomor_sk', 'like', '%' . $this->search . '%')->paginate(6)
-            // 'dataIppkh' => DataIppkh::all()
+            'dataIppkhs' => DataIppkh::query()
+                ->when($this->filters['berlaku-min'], fn ($query, $berlaku) => $query->where('masa_berlaku', '>=', $berlaku))
+                ->when($this->filters['berlaku-max'], fn ($query, $berlaku) => $query->where('masa_berlaku', '<=', $berlaku))
+                ->search('pt', $this->search)
+                ->paginate(6)
         ]);
     }
 }

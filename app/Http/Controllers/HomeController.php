@@ -99,8 +99,10 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DataIppkh $dataIppkh)
+    public function destroy(DataIppkh $home)
     {
-        //
+        DataIppkh::destroy($home->id);
+
+        return redirect()->back();
     }
 }

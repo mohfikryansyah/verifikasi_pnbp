@@ -1,152 +1,148 @@
 @extends('auth.layouts.main-login')
 
 @section('content')
-    <header class="w-full lg:bg-transparent bg-green-800 absolute top-0 left-0">
-        <nav class="z-20 top-0 left-0">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="https://bpkhtl15-gorontalo.id/" class="flex ml-2 md:mr-24">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Logo_of_the_Ministry_of_Environmental_Affairs_and_Forestry_of_the_Republic_of_Indonesia.svg/900px-Logo_of_the_Ministry_of_Environmental_Affairs_and_Forestry_of_the_Republic_of_Indonesia.svg.png"
-                        class="h-8 mr-3" alt="FlowBite Logo" />
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">BPKHTL-XV</span>
-                </a>
-                <div class="flex md:order-2">
-                    @auth
-
-                        <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation"
-                            class="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
-                            type="button">Welcome, {{ auth()->user()->name }}<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 1 4 4 4-4" />
-                            </svg></button>
-
-                        <!-- Dropdown menu -->
-                        <div id="dropdownInformation"
-                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                            <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                                <div>{{ auth()->user()->name }}</div>
-                                <div class="font-medium truncate">{{ auth()->user()->email }}</div>
-                            </div>
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                aria-labelledby="dropdownInformationButton">
-                                <li>
-                                    <a href="/home" class="block px-4 py-2 hover:bg-gray-100 ">Dashboard</a>
-                                </li>
-                                <li>
-                                    <form action="{{ route('logout') }}" method="POST">
-                                        @csrf
-                                        <button class="block w-full text-left px-4 py-2 hover:bg-gray-100 ">Logout</button>
-                                    </form>
-                                </li>
-                        </div>
-                    @else
-                        <a href="/login"
-                            class="text-white outline-1 outline hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">LOGIN</a>
-                    @endauth
-                    {{-- <button data-collapse-toggle="navbar-sticky" type="button"
-                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                aria-controls="navbar-sticky" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M1 1h15M1 7h15M1 13h15" />
-                </svg>
-            </button> --}}
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Logo_of_the_Ministry_of_Environmental_Affairs_and_Forestry_of_the_Republic_of_Indonesia.svg/900px-Logo_of_the_Ministry_of_Environmental_Affairs_and_Forestry_of_the_Republic_of_Indonesia.svg.png"
+                    class="h-11" alt="Flowbite Logo">
+                <div class="flex flex-col -space-y-2">
+                    <span class="text-xl font-bold font-figtree whitespace-nowrap text-slate-800">BPKHTL-XV</span>
+                    <span class="text-2xl font-bold font-figtree whitespace-nowrap text-slate-800">GORONTALO</span>
                 </div>
-                <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-                    <ul
-                        class="flex flex-col p-4 md:p-0 mt-4 lg:-ml-44 font-medium rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
-                        {{-- <li>
-                    <a href="#" class="block py-2 pl-3 pr-4 text-white md:p-0">Home</a>
-                </li>
-                <li>
-                    <button id="mega-menu-full-dropdown-button" data-collapse-toggle="mega-menu-full-dropdown"
-                        class="flex items-center justify-between w-full py-2 pl-3 pr-4  text-white rounded md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Company
-                        <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg></button>
-                </li>
-                <li>
-                    <a href="#" class="block py-2 pl-3 pr-4 text-white md:p-0">Wisata Desa</a>
-                </li>
-                <li>
-                    <a href="#" class="block py-2 pl-3 pr-4 text-white md:p-0">Kuliner</a>
-                </li> --}}
-
-                    </ul>
-                </div>
+            </a>
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <a href="{{ route('login') }}"
+                    class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Login</a>
             </div>
-            {{-- <div id="mega-menu-full-dropdown"
-        class="mt-1 border-gray-200 shadow-sm bg-gray-50 md:bg-white border-y dark:bg-gray-800 dark:border-gray-600 hidden">
-        <div
-            class="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:px-6">
-            <ul>
-                <li>
-                    <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                        <div class="font-semibold">Online Stores</div>
-                        <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
-                            that you're already using.</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                        <div class="font-semibold">Segmentation</div>
-                        <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
-                            that you're already using.</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                        <div class="font-semibold">Marketing CRM</div>
-                        <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
-                            that you're already using.</span>
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                        <div class="font-semibold">Online Stores</div>
-                        <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
-                            that you're already using.</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                        <div class="font-semibold">Segmentation</div>
-                        <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
-                            that you're already using.</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                        <div class="font-semibold">Marketing CRM</div>
-                        <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools
-                            that you're already using.</span>
-                    </a>
-                </li>
-            </ul>
         </div>
-    </div> --}}
-        </nav>
-
-    </header>
+    </nav>
 
     <section
-        class="lg:pt-[32vh] pt-[32vh] h-[100vh] bg-[url(https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)] bg-blend-multiply bg-gray-700">
-        <div class="grid max-w-screen-lg px-4 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-12">
-            <div class="text-center col-span-12">
-                {{-- <div class="flex justify-center items-center"> --}}
-                <h1 class="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl lg:text-5xl text-white dark:text-white">
-                    WEBSITE RESMI BPKHTL XV GORONTALO</h1>
-                <p class="max-w-2xl mx-auto mb-6 font-light text-gray-200 lg:mb-8 md:text-lg lg:text-xl">Belum punya akun?
-                </p>
-                {{-- </div> --}}
-                <a href="/register"
-                    class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-lg px-5 py-3 text-center w-40">Register</a>
+        class="sm:pt-[20vh] pt-[15vh] h-[100vh] bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
+            <marquee
+                class="max-w-screen-sm inline-flex justify-between items-center py-1 px-1 pe-4 mb-7 text-sm text-green-700 rounded-full">
+                {{-- <span class="text-xs bg-green-600 rounded-full text-white px-4 py-1.5 me-3">New</span>  --}}
+                <span class="text-base font-medium">Selamat Datang di Situs Resmi BPKHTL-XV Gorontalo</span>
+                {{-- <svg class="w-2.5 h-2.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 9 4-4-4-4" />
+                </svg> --}}
+            </marquee>
+            <h1
+                class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                VERIFIKASI PNBP</h1>
+            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">Website ini menyediakan informasi terkait prosedur dan persyaratan izin pinjam pakai kawasan hutan untuk pengembangan berkelanjutan dan legal.</p>
+            <form action="/" class="w-full max-w-md mx-auto">
+                <label for="keyword" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 rtl:inset-x-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                            aria-hidden="true" fill="currentColor"
+                            viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                            <path
+                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                        </svg>
+                    </div>
+                    <input type="search" id="keyword" name="keyword"
+                        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-green-500 focus:border-green-500 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
+                        placeholder="Contoh: Gorontalo Mineral" value="{{ request('keyword') }}">
+                    <button
+                        class="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white dark:text-gray-400"
+                        aria-hidden="true" fill="currentColor"
+                            viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                            <path
+                                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div
+            class="bg-gradient-to-b from-green-50 to-transparent dark:from-green-900 w-full h-full absolute top-0 left-0 z-0">
+        </div>
+    </section>
+
+    <section class="bg-gray-50">
+        <div class="max-w-screen-xl py-8 mx-auto">
+            <div class="w-full lg:-mt-40 -mt-[200px]">
+                <div class="relative overflow-x-auto shadow-md rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-100 uppercase bg-green-400 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    No.
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Perusahaan
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Nomor SK
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Berlaku (Tahun)
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Mulai
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Berakhir
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Verifikasi PNBP
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Bukti Bayar
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Keterangan
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data as $d)
+                                <tr
+                                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $loop->iteration }}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{ $d->pt }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $d->nomor_sk }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $d->masa_berlaku }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        {{ $d->mulai }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        {{ $d->berakhir }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $d->verifikasi_pbnp }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $d->bukti_bayar }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $d->keterangan }}
+                                    </td>
+                                </tr>
+                                {{-- @else
+                            <tr>
+                               <td colspan="8">Kosong</td> 
+                            </tr> --}}
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
@@ -209,6 +205,9 @@
                                     <td class="px-6 py-4">
                                         0812-3456-7890
                                     </td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://wa.me/6281234567890" class="text-blue-400 hover:text-blue-500" target="_blank">Link Whatsapp</a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -218,217 +217,24 @@
                 <!-- Modal footer -->
                 <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                     <button data-modal-hide="defaultModal" type="button"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Close</button>
+                        class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Close</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- End block -->
-    <!-- Start block -->
-    <!-- End block -->
 
-    {{-- <section class="bg-white">
-    <div class="max-w-screen-xl px-6 py-8 mx-auto lg:py-24 lg:px-6">
-        <div class="w-full lg:-mt-40 -mt-[200px] h-auto p-4 bg-white border rounded-lg shadow-md sm:p-8">
-            <div class="flex lg:flex-row flex-col">
-                <div class="bg-green-800 lg:max-w-xs w-full rounded-lg mr-3 mb-4 lg:mb-0">
-
-                    <div id="indicators-carousel" class="relative w-full" data-carousel="slide">
-                        <!-- Carousel wrapper -->
-                        <div class="relative h-[416px] bg-red-300 overflow-hidden rounded-lg">
-                            <div class="hidden duration-700 ease-in-out group" data-carousel-item>
-                                <img src="https://source.unsplash.com/320x416?web+programming"
-                                    class="absolute group-hover:scale-125 transition-all duration-500 block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                                    alt="...">
-                            </div>
-                            <div class="hidden duration-700 ease-in-out group" data-carousel-item>
-                                <img src="https://source.unsplash.com/320x416?coffee"
-                                    class="absolute group-hover:scale-125 transition-all duration-500 block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                                    alt="...">
-                            </div>
-                            <div class="hidden duration-700 ease-in-out group" data-carousel-item>
-                                <img src="https://source.unsplash.com/320x416?computer"
-                                    class="absolute group-hover:scale-125 transition-all duration-500 block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                                    alt="...">
-                            </div>
-                            <div class="hidden duration-700 ease-in-out group" data-carousel-item>
-                                <img src="https://source.unsplash.com/320x416?laptop"
-                                    class="absolute group-hover:scale-125 transition-all duration-500 block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                                    alt="...">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="rounded-lg w-full">
-                    <div class="flex flex-row">
-                        <h1 class="text-2xl font-semibold">Berita terkini</h1>
-                        <div class="flex-1"></div>
-                        <a href="" class="hover:text-blue-400 hover:-translate-y-1">Lihat semua</a>
-                    </div>
-
-                    <div role="status"
-                        class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 md:flex md:items-center mt-4 overflow-hidden">
-                        <div
-                            class="flex items-center justify-center w-full h-28 bg-gray-300 rounded md:w-60 dark:bg-gray-700 overflow-hidden">
-                            <img src="https://source.unsplash.com/240x150?coffee" alt="">
-                        </div>
-                        <div class="w-full">
-                            <h3>Apa kek</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ab, repudiandae ullam cupiditate, neque non commodi nesciunt temporibus debitis adipisci nobis dolor amet sunt! Non asperiores facilis beatae saepe id, commodi, possimus tempore quos</p>
-                            <p>Baca selengkapnya</p>
-                        </div>
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                    <div role="status"
-                        class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 md:flex md:items-center mt-4">
-                        <div
-                            class="flex items-center justify-center w-full h-28 bg-gray-300 rounded md:w-60 dark:bg-gray-700">
-                            <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path
-                                    d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                            </svg>
-                        </div>
-                        <div class="w-full">
-                            <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
-                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
-                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
-                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
-                        </div>
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                    <div role="status"
-                        class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 md:flex md:items-center mt-4">
-                        <div
-                            class="flex items-center justify-center w-full h-28 bg-gray-300 rounded md:w-60 dark:bg-gray-700">
-                            <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path
-                                    d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                            </svg>
-                        </div>
-                        <div class="w-full">
-                            <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
-                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
-                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
-                            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
-                        </div>
-                        <span class="sr-only">Loading...</span>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section> --}}
-
-
-
-
-    {{-- <footer class="bg-white dark:bg-gray-800">
-    <div class="max-w-screen-xl p-4 py-6 mx-auto lg:py-16 md:p-8 lg:p-10">
-        <div class="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
-            <div>
-                <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h3>
-                <ul class="text-gray-500 dark:text-gray-400">
-                    <li class="mb-4">
-                        <a href="#" class=" hover:underline">About</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Careers</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Brand Center</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Blog</a>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h3>
-                <ul class="text-gray-500 dark:text-gray-400">
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Discord Server</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Twitter</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Facebook
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Contact Us</a>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h3>
-                <ul class="text-gray-500 dark:text-gray-400">
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Privacy Policy</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Licensing</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Terms</a>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h3>
-                <ul class="text-gray-500 dark:text-gray-400">
-                    <li class="mb-4">
-                        <a href="#" class=" hover:underline">About</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Careers</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Brand Center</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Blog</a>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Download</h3>
-                <ul class="text-gray-500 dark:text-gray-400">
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">iOS</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Android</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Windows</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">MacOS</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <footer class="bg-whitemax-w-screen-xl p-4 py-6 mx-auto lg:py-12 md:p-8 lg:p-10">
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
         <div class="text-center">
             <a href="#"
-                class="flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900 dark:text-white">
-                <img src="./images/logo.svg" class="h-6 mr-3 sm:h-9" alt="Landwind Logo" />
-                Landwind
+                class="flex flex-col items-center justify-center mb-5 text-2xl font-semibold text-gray-900 uppercase">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Logo_of_the_Ministry_of_Environmental_Affairs_and_Forestry_of_the_Republic_of_Indonesia.svg/900px-Logo_of_the_Ministry_of_Environmental_Affairs_and_Forestry_of_the_Republic_of_Indonesia.svg.png"
+                    class="h-6 mr-3 sm:h-14 mb-3" alt="Landwind Logo" />
+                Balai Pemantapan Kawasan Hutan
             </a>
-            <span class="block text-sm text-center text-gray-500 dark:text-gray-400">© 2021-2022 Landwind™. All
-                Rights Reserved. Built with <a href="https://flowbite.com"
-                    class="text-purple-600 hover:underline dark:text-purple-500">Flowbite</a> and <a
-                    href="https://tailwindcss.com"
-                    class="text-purple-600 hover:underline dark:text-purple-500">Tailwind CSS</a>.
+            <span class="block text-sm text-center text-gray-500 dark:text-gray-400">© 2023 Mahasiswa Magang
+                Universitas Negeri Gorontalo
             </span>
             <ul class="flex justify-center mt-5 space-x-5">
                 <li>
@@ -482,6 +288,7 @@
                 </li>
             </ul>
         </div>
-    </div>
-</footer> --}}
+        </div>
+    </footer>
+    
 @endsection

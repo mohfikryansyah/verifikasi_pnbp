@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('pt');
             $table->string('email');
             $table->string('nomor_sk');
-            $table->string('masa_berlaku');
+            $table->integer('masa_berlaku')->nullable();
             $table->date('mulai');
             $table->date('berakhir')->nullable();
             $table->string('luas');
