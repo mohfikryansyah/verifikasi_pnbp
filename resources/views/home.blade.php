@@ -5,10 +5,10 @@
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Logo_of_the_Ministry_of_Environmental_Affairs_and_Forestry_of_the_Republic_of_Indonesia.svg/900px-Logo_of_the_Ministry_of_Environmental_Affairs_and_Forestry_of_the_Republic_of_Indonesia.svg.png"
-                    class="h-11" alt="Flowbite Logo">
+                    class="md:h-11 h-10" alt="Flowbite Logo">
                 <div class="flex flex-col -space-y-2">
-                    <span class="text-xl font-bold font-figtree whitespace-nowrap text-slate-800">BPKHTL-XV</span>
-                    <span class="text-2xl font-bold font-figtree whitespace-nowrap text-slate-800">GORONTALO</span>
+                    <span class="md:text-xl text-lg font-bold font-figtree whitespace-nowrap text-slate-800">BPKHTL-XV</span>
+                    <span class="md:text-2xl text-xl font-bold font-figtree whitespace-nowrap text-slate-800">GORONTALO</span>
                 </div>
             </a>
             <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -67,8 +67,8 @@
     </section>
 
     <section class="bg-gray-50">
-        <div class="max-w-screen-xl py-8 mx-auto">
-            <div class="w-full lg:-mt-40 -mt-[200px]">
+        <div class="max-w-screen-xl py-8 px-4 mx-auto">
+            <div class="w-full lg:-mt-40 -mt-[150px]">
                 <div class="relative overflow-x-auto shadow-md rounded-lg">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-100 uppercase bg-green-400 dark:bg-gray-700 dark:text-gray-400">
