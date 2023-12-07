@@ -4,14 +4,14 @@
         {{-- {{ $histories->dataippkh->pt }} --}}
         <div
             class="sm:mr-5 block w-full mb-3 text-center p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $data->pt }}</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">{{ $data->nomor_sk }}</p>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ $data->pt }}</h5>
+            <p class="font-normal text-gray-700">{{ $data->nomor_sk }}</p>
         </div>
         
         <div class="my-5">
 
             <a href="{{ route('history.create') }}"
-                class="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-emerald-600 dark:hover:bg-emerald-700 focus:outline-none dark:focus:ring-emerald-800">Tambah Data Pertahun</a>
+                class="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none">Tambah Data Pertahun</a>
         </div>
 
         <div class="relative overflow-x-auto shadow sm:rounded-lg border border-gray-200 p-5">
@@ -37,9 +37,9 @@
                 </thead>
                 <tbody>
                     @forelse ($data->history as $history)
-                        <tr class="dark:bg-gray-800 dark:border-gray-700">
+                        <tr class="dark:bg-gray-800">
                             <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $history->tahun }}
                             </th>
                             <td class="px-6 py-4">
