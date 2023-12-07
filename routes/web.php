@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HistoryIppkhController;
 use App\Http\Controllers\HomeController;
 use App\Models\DataIppkh;
@@ -31,16 +32,7 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::get('/search', function (Request $request) {
-//     $keyword = $request->keyword;
-//     return view('home', [
-//         'dataIppkhs' => DataIppkh::where('id', 'like', "%" . $keyword . "$")->get(),
-//         'keyword' => $keyword
-//     ]);
-// });
-
 Route::resource('/home', HomeController::class)->middleware('auth');
 Route::resource('/home/history', HistoryIppkhController::class)->middleware('auth');
-// Route::resource('/history', HistoryIppkhController::class)->middleware('auth');
 
-Auth::routes();
+require __DIR__.'/auth.php';

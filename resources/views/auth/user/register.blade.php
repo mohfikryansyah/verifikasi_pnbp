@@ -39,7 +39,7 @@
                 <a href="#" class="ml-auto text-sm text-primary-700 hover:underline">Lost Password?</a>
             </div> --}}
             <button type="submit" class="w-full px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 sm:w-auto ">Register</button>
-            <div class="text-sm font-medium text-gray-500 dark:text-gray-400">
+            <div class="text-sm font-medium text-gray-500">
                 Registered? <a href="/login" class="text-primary-700 hover:underline">Sign in</a>
             </div>
         </form>

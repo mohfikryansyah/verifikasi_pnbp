@@ -38,7 +38,7 @@
                 {{-- @if (Route::has('password.request'))
                     <a href="{{ route('password.request') }}" class="ml-auto text-sm text-primary-700 hover:underline">Lost Password?</a>
                     @endif --}}
-                    <div class="text-sm font-medium text-gray-500 dark:text-gray-400">
+                    <div class="text-sm font-medium text-gray-500">
                         Not registered? <a href="/register" class="text-primary-700 hover:underline">Create account</a>
                     </div>
             </div>
